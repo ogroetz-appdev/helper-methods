@@ -16,7 +16,8 @@
 
   <div>
     <%= label_tag :description %>
-    <%= text_area_tag :description, @movie.description, id: "description", rows: 3 %>
+    <%# <%= text_area_tag :description, @movie.description, id: "description", rows: 3 %>
+    <%= text_field_tag "movie[description]", @movie.description %>
   </div>
 
   <%= button_tag "Create Movie" %>
