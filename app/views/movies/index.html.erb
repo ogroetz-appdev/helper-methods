@@ -2,6 +2,27 @@
   List of all movies
 </h1>
 
+
+<%# params become an array:  nested structures within param hash %>
+<form>
+  <label>Red</label>
+  <input type="checkbox" name="zebra[]" value="red" >
+  <label>Blue</label>
+  <input type="checkbox" name="zebra[]" value="blue" >
+  <button>Submit</button>
+</form>
+
+<form>
+  <label>Red</label>
+  <%# sub hash with red being first element in array %>
+  <input name="zebra[red]" value="red" > 
+
+  <label>Blue</label>
+  <input name="zebra[blue]" value="blue" >
+  <button>Submit</button>
+</form>
+
+
 <hr>
 
 <div>
@@ -38,31 +59,31 @@
     </th>
   </tr>
 
-  <% @list_of_movies.each do |a_movie| %>
+  <% @movies.each do |movie| %>
   <tr>
     <td>
-      <%= a_movie.id %>
+      <%= movie.id %>
     </td>
 
     <td>
-      <%= a_movie.title %>
+      <%= movie.title %>
     </td>
 
     <td>
-      <%= a_movie.description %>
+      <%= movie.description %>
     </td>
 
     <td>
-      <%= time_ago_in_words(a_movie.created_at) %> ago
+      <%= time_ago_in_words(movie.created_at) %> ago
     </td>
     <td>
-      <%= time_ago_in_words(a_movie.updated_at) %> ago
+      <%= time_ago_in_words(movie.updated_at) %> ago
     </td>
 
     <td>
-        <%= link_to "Show details", movie_path(a_movie) %>
+        <%= link_to "Show details", movie_path(movie) %>
 
-        <%= link_to "Show details", a_movie %>
+        <%= link_to "Show details", movie %>
 
     </td>
   </tr>
