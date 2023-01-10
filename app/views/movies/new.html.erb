@@ -6,7 +6,9 @@
 
 <%# NEW FORM HELPER %>
 <%# auto gives us authenticity token for CORS %>
-<%= form_with(url: movies_path) do %>
+<%# <%= form_with(url: movies_path) do %>
+<%= form_with(model: @movie) do |form| %>
+
   <div>
     <%= label_tag :title, "Title" %>
     <%# first arg is the name, second is the value %>
@@ -15,12 +17,16 @@
   </div>
 
   <div>
-    <%= label_tag :description %>
+    <%# <%= label_tag :description %>
+    <%= form.label :description %>
     <%# <%= text_area_tag :description, @movie.description, id: "description", rows: 3 %>
-    <%= text_field_tag "movie[description]", @movie.description %>
+    <%# <%= text_area_tag "movie[description]", @movie.description, rows: 3 %> 
+    <%= form.text_area :description, rows: 3 %>
   </div>
 
-  <%= button_tag "Create Movie" %>
+  <%# <%= button_tag "Create Movie" %>
+    <%= form.button "Create Movie" %>
+
 <% end %>
 
 <%# { :movie => { :title => "Some title", :description => "Yaddyya" } } %>
